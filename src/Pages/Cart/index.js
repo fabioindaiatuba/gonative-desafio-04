@@ -27,9 +27,11 @@ const Cart = ({ cart, removeItem, updateQty }) => (
   </View>
 );
 
+const TabBarIcon = ({ tintColor }) => <Icon name="shopping-cart" size={24} color={tintColor} />;
+
 Cart.navigationOptions = {
   title: 'Carrinho',
-  tabBarIcon: ({ tintColor }) => <Icon name="shopping-cart" size={24} color={tintColor} />,
+  tabBarIcon: TabBarIcon,
 };
 
 Cart.propTypes = {
@@ -41,6 +43,10 @@ Cart.propTypes = {
   }).isRequired,
   removeItem: PropTypes.func.isRequired,
   updateQty: PropTypes.func.isRequired,
+};
+
+TabBarIcon.propTypes = {
+  tintColor: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({

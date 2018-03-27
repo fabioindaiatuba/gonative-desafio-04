@@ -47,14 +47,20 @@ const Details = ({ navigation, addItem }) => {
   );
 };
 
+const TabBarIcon = ({ tintColor }) => <Icon name="home" size={24} color={tintColor} />;
+
 Details.navigationOptions = {
   title: 'Detalhes',
-  tabBarIcon: ({ tintColor }) => <Icon name="home" size={24} color={tintColor} />,
+  tabBarIcon: TabBarIcon,
 };
 
 Details.propTypes = {
   navigation: PropTypes.shape().isRequired,
   addItem: PropTypes.func.isRequired,
+};
+
+TabBarIcon.propTypes = {
+  tintColor: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
