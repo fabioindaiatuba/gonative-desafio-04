@@ -34,7 +34,10 @@ const Details = ({ navigation, addItem }) => {
         <View style={styles.footer} >
           <TouchableOpacity
             style={styles.btn}
-            onPress={() => addItem({ ...product, qty: 1 })}
+            onPress={() => {
+              addItem({ ...product, qty: 1 });
+              navigation.navigate('CartMenu');
+            }}
           >
             <Text style={styles.btnText}>Adicionar ao Carrinho</Text>
           </TouchableOpacity>

@@ -7,7 +7,7 @@ import { colors } from 'styles';
 
 import styles from './styles';
 
-const ItemCart = ({ itemCart, onPress }) => (
+const ItemCart = ({ itemCart, onPress, editQty }) => (
   <View style={styles.container}>
     <Image source={{ uri: itemCart.image }} style={styles.image} />
     <View style={styles.containerText}>
@@ -23,7 +23,9 @@ const ItemCart = ({ itemCart, onPress }) => (
         placeholder="0"
         placeholderTextColor={colors.light}
         underlineColorAndroid="transparent"
+        keyboardType="numeric"
         value={String(itemCart.qty)}
+        onChangeText={text => editQty(Number(text), itemCart)}
       />
       <TouchableOpacity onPress={onPress}>
         <Icon name="close" size={16} color={colors.regular} />
@@ -41,6 +43,7 @@ ItemCart.propTypes = {
     qty: PropTypes.number,
   }).isRequired,
   onPress: PropTypes.func.isRequired,
+  editQty: PropTypes.func.isRequired,
 };
 
 export default ItemCart;

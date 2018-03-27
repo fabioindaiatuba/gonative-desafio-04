@@ -3,6 +3,7 @@ import Immutable from 'seamless-immutable';
 export const Types = {
   ADD_ITEM: 'cart/ADD_ITEM',
   REMOVE_ITEM: 'cart/REMOVE_ITEM',
+  UPDATE_QTY: 'cart/UPDATE_QTY',
 };
 
 const initialState = Immutable({
@@ -46,6 +47,19 @@ export default function cart(state = initialState, action) {
         subTotal: items.reduce((total, item) => total + (item.price * item.qty), 0),
       };
     }
+    case Types.UPDATE_QTY: {
+      // localiza item e altera qty
+      const items = state.data.map((item) => {
+        if (item.id === action.payload.item.id) {
+          item.qty = action.payload.term;
+        }
+        return item;
+      });
+      return {
+        data: items,
+        subTotal: items.reduce((total, item) => total + (item.price * item.qty), 0),
+      };
+    }
     default:
       return state;
   }
@@ -59,5 +73,9 @@ export const Creators = {
   removeItem: id => ({
     type: Types.REMOVE_ITEM,
     payload: { id },
+  }),
+  updateQty: (term, item) => ({
+    type: Types.UPDATE_QTY,
+    payload: { term, item },
   }),
 };
