@@ -63,7 +63,7 @@ export default function cart(state = initialState, action) {
     default:
       return state;
   }
-}
+};
 
 export const Creators = {
   addItem: item => ({

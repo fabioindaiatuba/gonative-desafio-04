@@ -6,5 +6,5 @@ import cart from './cart';
 
 export default combineReducers({
   // empty: (state = {}) => state,
-  products, categories, cart
+  products, categories, cart,
 });
